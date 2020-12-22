@@ -13,7 +13,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 
 @RunWith(SerenityRunner.class)
-public class HandlingDropdowns extends PageObject {
+public class HandlingLinks extends PageObject {
 
     @Managed()
     private WebDriver driver;
@@ -31,13 +31,21 @@ public class HandlingDropdowns extends PageObject {
 	open();
 
 	// find(By.id("searchLanguage")).getSelectOptions();
-	List<WebElementFacade> values = findAll(By.tagName("option"));
 
-	System.out.println(values.get(7).getText());
+	WebElementFacade section = $("//div[@class='other-project-text']");
 
-	for (WebElementFacade value : values) {
-	    System.out.println(value.getAttribute("lang"));
+	WebElementFacade dropdown = find(By.id("searchLanguage"));
+
+	// List<WebElementFacade> links = findAll(By.tagName("option"));
+	List<WebElementFacade> links = section.thenFindAll(By.tagName("option"));
+
+	System.out.println(links.get(7).getText());
+
+	for (WebElementFacade link : links) {
+	    System.out.println("Link text is : " + link.getText() + "---Printing---" + link.getAttribute("lang"));
 	}
+
+	System.out.println("Total Count of Link : " + links.size());
 
     }
 }
