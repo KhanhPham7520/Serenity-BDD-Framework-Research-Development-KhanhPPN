@@ -18,14 +18,6 @@ public class HandlingLinks extends PageObject {
     @Managed()
     private WebDriver driver;
 
-    /**
-     * 
-     * 
-     * English - US English - UK
-     * 
-     * 
-     **/
-
     @Test
     public void WebElementTest() throws Exception {
 	open();
